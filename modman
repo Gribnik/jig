@@ -1,5 +1,5 @@
-adminhtml/template app/design/adminhtml/default/default/template/atwix
+adminhtml/template app/design/adminhtml/default/default/template/atwix/jig
 adminhtml/layout app/design/adminhtml/default/default/layout/atwix
-adminhtml/skin skin/adminhtml/default/default/atwix
+adminhtml/skin skin/adminhtml/default/default/atwix/jig
 code app/code/community/Atwix/Jig
 Atwix_Jig.xml app/etc/modules/Atwix_Jig.xml

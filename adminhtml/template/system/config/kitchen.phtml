@@ -1,0 +1,45 @@
+<?php
+/**
+ * Atwix
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+
+ * @category    Atwix Mod
+ * @package     Atwix_Jig
+ * @author      Atwix Core Team
+ * @copyright   Copyright (c) 2012 Atwix (http://www.atwix.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+/**
+ * @var $this Atwix_Jig_Block_Adminhtml_System_Config_Kitchen
+ */
+?>
+
+<h2>Hello world</h2>
+<p class="jig-subsection">
+    <h4>Generate products fixtures</h4>
+    <?php echo $this->__('Allows you to generate a test set of products and categories with ability to remove them in future'); ?>
+    <span class="jig-status-hint">Currenly generated products:
+        <span id="jig-products-generated-count"<?php echo $this->getGeneratedProductsCount() ?>
+    </span>
+</p>
+<button style="" onclick="" class="scalable add" type="button" id="jig_generate_products">
+    <span><span><span>Generate products fixtures</span></span></span>
+</button>
+<?php if ($this->getGeneratedProductsCount() > 0) : ?>
+<p class="jig-subsection">
+    <h4>Remove products fixtures</h4>
+    <?php echo $this->__('Remove previously generated test set of products'); ?>
+</p>
+<button style="" onclick="" class="scalable delete" type="button" id="jig_remove_products">
+    <span><span><span>Remove products fixtures</span></span></span>
+</button>
+<?php endif ?>
