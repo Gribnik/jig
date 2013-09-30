@@ -23,23 +23,22 @@
  */
 ?>
 
-<h2>Hello world</h2>
-<p class="jig-subsection">
+<div class="jig-subsection">
     <h4>Generate products fixtures</h4>
     <?php echo $this->__('Allows you to generate a test set of products and categories with ability to remove them in future'); ?>
     <span class="jig-status-hint">Currenly generated products:
-        <span id="jig-products-generated-count"<?php echo $this->getGeneratedProductsCount() ?>
+        <span id="jig-products-generated-count"><?php echo $this->getGeneratedProductsCount() ?></span>
     </span>
-</p>
-<button style="" onclick="" class="scalable add" type="button" id="jig_generate_products">
-    <span><span><span>Generate products fixtures</span></span></span>
-</button>
+    <button style="" onclick="" class="scalable add" type="button" id="jig_generate_products">
+        <span><span><span>Generate products fixtures</span></span></span>
+    </button>
+</div>
 <?php if ($this->getGeneratedProductsCount() > 0) : ?>
-<p class="jig-subsection">
+<div class="jig-subsection">
     <h4>Remove products fixtures</h4>
     <?php echo $this->__('Remove previously generated test set of products'); ?>
-</p>
-<button style="" onclick="" class="scalable delete" type="button" id="jig_remove_products">
-    <span><span><span>Remove products fixtures</span></span></span>
-</button>
+    <button style="" onclick="" class="scalable delete" type="button" id="jig_remove_products">
+        <span><span><span>Remove products fixtures</span></span></span>
+    </button>
+</div>
 <?php endif ?>
