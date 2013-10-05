@@ -31,13 +31,19 @@
                 <class>Atwix_Jig_Block</class>
             </atwix_jig>
         </blocks>
-    <!--
         <models>
             <atwix_jig>
                 <class>Atwix_Jig_Model</class>
             </atwix_jig>
         </models>
-    -->
+        <resources>
+            <jig_setup>
+                <setup>
+                    <module>Atwix_Jig</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </jig_setup>
+        </resources>
     <helpers>
         <atwix_jig>
             <class>Atwix_Jig_Helper</class>
@@ -68,17 +74,15 @@
     -->
     </global>
     <frontend>
-    <!--
         <routers>
             <atwix_jig>
                 <use>standard</use>
                 <args>
                     <module>Atwix_Jig</module>
-                    <frontName>atwix_jig</frontName>
+                    <frontName>jig</frontName>
                 </args>
             </atwix_jig>
         </routers>
-    -->
     <!--
         <translate>
             <modules>
