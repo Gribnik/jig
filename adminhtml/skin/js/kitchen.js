@@ -17,3 +17,34 @@
  * @copyright   Copyright (c) 2012 Atwix (http://www.atwix.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
+var atwixJigKitchen = Class.create();
+
+atwixJigKitchen.prototype = {
+
+    initialize: function(url) {
+    },
+
+    generateProducts: function(requestPath) {
+        response = this._sendRequest({}, requestPath);
+        if (response.status == 'ok') {
+            alert('the request has been completed successfully');
+        }
+    },
+
+    _sendRequest: function(params, url) {
+        var response = {};
+        new Ajax.Request(url, {
+            method:     'get',
+            parameters: params,
+            onSuccess: function(response) {
+                jsonResponse = response.responseText.evalJSON();
+                response = jsonResponse;
+            },
+            onFailure: function() {
+                response.status = 'error';
+                response.text = 'Cannot complete request'
+            }
+        })
+    }
+}

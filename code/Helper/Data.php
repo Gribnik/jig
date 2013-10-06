@@ -21,5 +21,10 @@
 
 class Atwix_Jig_Helper_Data extends Mage_Core_Helper_Data
 {
+    public function getKitchenActionUrl($action)
+    {
+        $url = Mage::helper("adminhtml")->getUrl('atwix_jig/kitchen/' . $action);
 
+        return $url;
+    }
 }

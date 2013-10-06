@@ -42,3 +42,13 @@
     </button>
 </div>
 <?php endif ?>
+
+<?php $helper = Mage::helper('atwix_jig') ?>
+<script type="text/javascript">
+//<![CDATA[
+    var atwixJig = new atwixJigKitchen();
+    $('jig_generate_products').observe('click', function() {
+        atwixJig.generateProducts('<?php echo $helper->getKitchenActionUrl('generateproducts') ?>')
+    });
+//]]>
+</script>
