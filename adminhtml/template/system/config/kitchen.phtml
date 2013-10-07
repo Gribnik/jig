@@ -25,10 +25,21 @@
 
 <div class="jig-subsection">
     <h4>Generate products fixtures</h4>
-    <?php echo $this->__('Allows you to generate a test set of products and categories with ability to remove them in future'); ?>
+    <?php echo $this->__('Generate a test set of products inside of existing category with ability to remove them in future in one click'); ?>
     <span class="jig-status-hint">Currenly generated products:
         <span id="jig-products-generated-count"><?php echo $this->getGeneratedProductsCount() ?></span>
     </span>
+    <table class="form-list-inside">
+        <tr>
+            <td class="label"><label for="jig-products-category-id"><?php echo $this->__('Category Id:') ?></label></td>
+            <td class="value">
+                <input id="jig-products-category-id" class="input-text" value="" name="jig-products-category-id">
+                <p class="note">
+                    <span><?php echo $this->__('The test products set will be created in this category') ?></span>
+                </p>
+            </td>
+        </tr>
+    </table>
     <button style="" onclick="" class="scalable add" type="button" id="jig_generate_products">
         <span><span><span>Generate products fixtures</span></span></span>
     </button>
@@ -36,7 +47,7 @@
 <?php if ($this->getGeneratedProductsCount() > 0) : ?>
 <div class="jig-subsection">
     <h4>Remove products fixtures</h4>
-    <?php echo $this->__('Remove previously generated test set of products'); ?>
+    <div><?php echo $this->__('Remove previously generated test set of products'); ?></div>
     <button style="" onclick="" class="scalable delete" type="button" id="jig_remove_products">
         <span><span><span>Remove products fixtures</span></span></span>
     </button>

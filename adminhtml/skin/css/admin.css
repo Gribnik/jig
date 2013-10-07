@@ -43,3 +43,10 @@
 #row_atwix_jig_general_kitchen td.label label {
     width: 0;
 }
+
+#row_atwix_jig_general_kitchen .form-list-inside td.label,
+#row_atwix_jig_general_kitchen .form-list-inside td.label label {
+    padding: 0;
+    width: 200px;
+}
+
