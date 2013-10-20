@@ -22,29 +22,18 @@
 class Atwix_Jig_KitchenController extends Mage_Adminhtml_Controller_Action
 {
 
-
     protected $_jsonResponse = array();
+    /** @var  $helper Atwix_Jig_Helper_Data */
+    public $helper;
 
     public function testAction()
     {
         echo 'hello world';
     }
 
-    public function fixtureproductAction()
+    protected function _construct()
     {
-        $productId = $this->getRequest()->getParam('pid');
-        if (!is_null($productId)) {
-            $product = Mage::getModel('catalog/product')->load($productId);
-            $product->setFixtureProduct('69');
-            try {
-                $product->save();
-                echo 'complete';
-            } catch (Exception $e) {
-                Mage::log($e->getMessage(), NULL, 'atwix_jig.log', true);
-            }
-        } else {
-            echo 'product id is not specified';
-        }
+        $this->helper = Mage::helper('atwix_jig');
     }
 
     public function removeproductsAction()
@@ -65,7 +54,23 @@ class Atwix_Jig_KitchenController extends Mage_Adminhtml_Controller_Action
 
     public function generateproductsAction()
     {
-        $this->_setJsonResponse('passed')->_sendJsonResponse();
+        $options = $this->getRequest()->getParams();
+        $categoryId = (int)$options['category_id'];
+        if ($categoryId > 0) {
+            /* Generate simple product */
+            $visibility = Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH;
+            $website = $options['website_id'];
+
+            if (false === $this->helper->generateSimpleProduct($visibility, array($categoryId), array($website))) {
+                $this->_setJsonResponse('An error occurred, see logs for details', 'error');
+            } else {
+                $this->_setJsonResponse('Products were generated successfully');
+            }
+        } else {
+            $this->_setJsonResponse('Wrong category id', 'error');
+        }
+
+        $this->_sendJsonResponse();
     }
 
     protected function _setJsonResponse($text, $status = 'ok')

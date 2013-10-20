@@ -25,18 +25,24 @@ atwixJigKitchen.prototype = {
     initialize: function(url) {
     },
 
-    generateProducts: function(requestPath) {
-        response = this._sendRequest({}, requestPath);
-        if (response.status == 'ok') {
-            alert('the request has been completed successfully');
-        }
+    generateProducts: function(requestPath, websiteId) {
+        var categoryId = $('jig-products-category-id').value;
+        var notices = $('kitchen-notices');
+        var response = this._sendRequest({
+            category_id: categoryId,
+            website_id: websiteId
+        }, requestPath);
+
+        notices.removeAttribute('class');
+        notices.addClassName(response.status);
+        notices.update(response.text);
     },
 
     _sendRequest: function(params, url) {
         var response = {};
         new Ajax.Request(url, {
             method:     'get',
-            parameters: params,
+            parameters: Object.toQueryString(params),
             onSuccess: function(response) {
                 jsonResponse = response.responseText.evalJSON();
                 response = jsonResponse;
@@ -46,5 +52,7 @@ atwixJigKitchen.prototype = {
                 response.text = 'Cannot complete request'
             }
         })
+
+        return response;
     }
 }

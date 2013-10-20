@@ -26,7 +26,6 @@ $installer = $this;
 $installer->startSetup();
 
 $attributeSettings = array(
-    'attribute_set' =>  'Default',
     'group'    => 'General',
     'label'    => 'Fixture',
     'visible'  => false,
@@ -47,5 +46,4 @@ $attributeSettings = array(
 /* Add the new attribute 'fixture_product' to mark all created products for testing purposes */
 
 $installer->addAttribute('catalog_product', 'fixture_product', $attributeSettings);
-
 $installer->endSetup();

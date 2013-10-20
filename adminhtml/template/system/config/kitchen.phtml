@@ -25,6 +25,7 @@
 
 <div class="jig-subsection">
     <h4>Generate products fixtures</h4>
+    <div id="kitchen-notices"></div>
     <?php echo $this->__('Generate a test set of products inside of existing category with ability to remove them in future in one click'); ?>
     <span class="jig-status-hint">Currenly generated products:
         <span id="jig-products-generated-count"><?php echo $this->getGeneratedProductsCount() ?></span>
@@ -36,6 +37,20 @@
                 <input id="jig-products-category-id" class="input-text" value="" name="jig-products-category-id">
                 <p class="note">
                     <span><?php echo $this->__('The test products set will be created in this category') ?></span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="label"><label for="jig-products-category-id"><?php echo $this->__('Include Subcategories:') ?></label></td>
+            <td class="value">
+                <select id="jig-products-include-subcats" name="jig-products-include-subcats" class="select">
+                    <option value="1" selected="selected">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <p class="note">
+                    <span>
+                        <?php echo $this->__('Also generate products inside of subcategories of the choosed category') ?>
+                    </span>
                 </p>
             </td>
         </tr>
@@ -55,11 +70,13 @@
 <?php endif ?>
 
 <?php $helper = Mage::helper('atwix_jig') ?>
+<?php $websiteId =  $helper->getCurrentWebsite() ?>
+<?php $actionUrl = $helper->getKitchenActionUrl('generateproducts') ?>
 <script type="text/javascript">
 //<![CDATA[
     var atwixJig = new atwixJigKitchen();
     $('jig_generate_products').observe('click', function() {
-        atwixJig.generateProducts('<?php echo $helper->getKitchenActionUrl('generateproducts') ?>')
+        atwixJig.generateProducts('<?php echo $actionUrl ?>', '<?php echo $websiteId ?>');
     });
 //]]>
 </script>
